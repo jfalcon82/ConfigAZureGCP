@@ -1,0 +1,23 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tienda-dp
+  labels:
+    name: app1
+    type: back-end
+spec:
+  template:
+      metadata:
+        name: tienda-pod
+        labels:
+          app: app1
+          type: back-end
+      spec:
+        containers:
+          - name: tienda-container
+            image: jfalconnet/tiendaapi:22
+  replicas: 1
+  selector:
+    matchLabels:
+      type: back-end
+      app: app1
