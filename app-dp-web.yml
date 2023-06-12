@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tienda-client-dp
+  labels:
+    name: app2
+    type: front-end
+spec:
+  template:
+      metadata:
+        name: tienda-client-pod
+        labels:
+          app: app2
+          type: front-end
+      spec:
+        containers:
+          - name: tienda-container
+            image: jfalconnet/tiendaclient:24
+  replicas: 1
+  selector:
+    matchLabels:
+      type: front-end
+      app: app2
